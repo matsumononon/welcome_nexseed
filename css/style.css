@@ -19,11 +19,12 @@ header{
 .icon{
   display: flex;
   align-items: center;
-  margin-left: 80px;
+/*  margin-left: 80px;*/
   
 }
 .icon img{
-  height: 60px; 
+  height: 60px;
+  margin-left: 80px;
 }
 /*⬆︎画像のリサイズ*/
 .icon .name strong{
@@ -244,6 +245,7 @@ footer footer-right{
   }
   
 }
+/*タブレット用*/
 @media screen and (max-width: 960px){
 /*  curriculum*/
   .img-box{
@@ -288,6 +290,76 @@ footer footer-right{
     margin-left: 0px;
   }
 */
+}
+/*スマホ用*/
+@media screen and (max-width: 480px){
+  body{
+    min-width: 375px;
+/*    headerの対応*/
+/*    アイコン左の余白は20px*/
+    
+  }
+/*
+  .btn{
+    margin-left: 0px;
+    align-items: center;
+    display: flex;
+    text-align: center;
+  }
+  header .name{
+    display: none;
+*/
+    
+/*  }*/
+  .header-right{
+    display: none;
+  }
+  .icon img{
+    margin-left: 20px;
+  }
+.icon span{
+  display: none;
+}
+/*  footer*/
+  footer{
+/*    display: flex; すでに書いてあるからオッケ*/
+    justify-content: center;
+    
+  }
+  footer .icon{
+    display: none;
+    
+  }
+  footer .footer-right{
+    margin-right: 0;
+  }
+/*  welcome*/
+  .title{
+    font-size: 30px;
+    
+  }
+  .guideline{
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .btn-group{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .btn{
+    margin-left: 0;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+    height: 48px;
+    width: 40%;
+  }
+  .btn:first-child{
+    margin-top: 0px;
+  }
 }
 
 
