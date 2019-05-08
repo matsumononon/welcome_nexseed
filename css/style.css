@@ -1,3 +1,12 @@
+.fixed{
+  position: fixed;
+  width: 100%;
+  margin-top:-70px;
+}
+#margin-for-fixd{
+  margin-top: 70px;
+}
+/*idは#で指定*/
 header{
   display:flex;
   justify-content: space-between;
@@ -210,5 +219,17 @@ button:hover{
   color:#1dace0;
   transition-duration: 500ms;
 /*  500マイクロ秒*/
+}
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #233f51;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+}
+footer footer-right{
+  margin-right: 80px;
 }
 
