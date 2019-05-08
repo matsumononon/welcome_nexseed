@@ -1,3 +1,12 @@
+.fixed{
+  position: fixed;
+  width: 100%;
+  margin-top:-70px;
+}
+#margin-for-fixd{
+  margin-top: 70px;
+}
+/*idは#で指定*/
 header{
   display:flex;
   justify-content: space-between;
@@ -10,11 +19,12 @@ header{
 .icon{
   display: flex;
   align-items: center;
-  margin-left: 80px;
+/*  margin-left: 80px;*/
   
 }
 .icon img{
-  height: 60px; 
+  height: 60px;
+  margin-left: 80px;
 }
 /*⬆︎画像のリサイズ*/
 .icon .name strong{
@@ -211,4 +221,145 @@ button:hover{
   transition-duration: 500ms;
 /*  500マイクロ秒*/
 }
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #233f51;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+}
+footer footer-right{
+  margin-right: 80px;
+}
+
+/*レスポンシブ対応*/
+/*小型PC用*/
+@media screen and (max-width: 1280px){
+  .img-box{
+    justify-content: space-around;
+  }
+  .img-box li{
+    margin-right: 30px;
+  }
+  
+}
+/*タブレット用*/
+@media screen and (max-width: 960px){
+/*  curriculum*/
+  .img-box{
+    flex-wrap: wrap;
+    align-content: space-around;
+  
+  }
+  .img-box li{
+    margin-top: 30px;
+    margin-right: 0;
+  }
+  /*  curriculumここまで*/
+/*  contact*/
+  .contact{
+    height: 100%;
+    padding: 40px 20px;
+    
+  }
+  .contact .form{
+    flex-flow: column nowrap;
+    margin: 30px 0; 
+  }
+  .form-left{
+    margin-right: 0;
+    margin-bottom: 30px;
+    
+  }
+  .form .name,
+  .form .email{
+    width: 80%;
+  }
+  .form .inquiry{
+    width: 80%;
+  }
+  .contact button{
+    font-size: 20px;
+    padding: 5px 40px;
+    box-sizing: border-box;
+  }
+/*
+  .btn{
+    margin-left: 0px;
+  }
+*/
+}
+/*スマホ用*/
+@media screen and (max-width: 480px){
+  body{
+    min-width: 375px;
+/*    headerの対応*/
+/*    アイコン左の余白は20px*/
+    
+  }
+/*
+  .btn{
+    margin-left: 0px;
+    align-items: center;
+    display: flex;
+    text-align: center;
+  }
+  header .name{
+    display: none;
+*/
+    
+/*  }*/
+  .header-right{
+    display: none;
+  }
+  .icon img{
+    margin-left: 20px;
+  }
+.icon span{
+  display: none;
+}
+/*  footer*/
+  footer{
+/*    display: flex; すでに書いてあるからオッケ*/
+    justify-content: center;
+    
+  }
+  footer .icon{
+    display: none;
+    
+  }
+  footer .footer-right{
+    margin-right: 0;
+  }
+/*  welcome*/
+  .title{
+    font-size: 30px;
+    
+  }
+  .guideline{
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .btn-group{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .btn{
+    margin-left: 0;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+    height: 48px;
+    width: 40%;
+  }
+  .btn:first-child{
+    margin-top: 0px;
+  }
+}
+
 
