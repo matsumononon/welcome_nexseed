@@ -1,3 +1,9 @@
+@media only screen and (max-width: 480px) {
+  body {
+    min-width: 375px;
+  }
+}
+
 .fixed {
   position: fixed;
   width: 100%;
@@ -15,7 +21,9 @@ header {
 
 header .icon {
   display: flex;
+  justify-content: none;
   align-items: center;
+  flex-direction: none;
 }
 
 header .icon img {
@@ -23,18 +31,38 @@ header .icon img {
   margin-left: 80px;
 }
 
+@media only screen and (max-width: 480px) {
+  header .icon img {
+    margin-left: 20px;
+  }
+}
+
 header .icon .name strong {
   color: #eae51f;
 }
 
+@media only screen and (max-width: 480px) {
+  header .icon .name {
+    display: none;
+  }
+}
+
 header .header-right {
   display: flex;
+  justify-content: none;
   align-items: center;
+  flex-direction: none;
   margin-right: 80px;
 }
 
 header .header-right li:first-child {
   margin-right: 15px;
+}
+
+@media only screen and (max-width: 480px) {
+  header .header-right {
+    display: none;
+  }
 }
 
 #margin-for-fixd {
@@ -43,19 +71,27 @@ header .header-right li:first-child {
 
 .welcome {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: none;
+  flex-direction: column;
   text-align: center;
   background-image: url(../img/background1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  Width: none;
   background-attachment: fixed;
   color: #fff;
 }
 
 .welcome .title {
   font-size: 64px;
+}
+
+@media only screen and (max-width: 480px) {
+  .welcome .title {
+    font-size: 30px;
+  }
 }
 
 .welcome .guideline {
@@ -68,13 +104,32 @@ header .header-right li:first-child {
   margin-top: 16px;
 }
 
+@media only screen and (max-width: 480px) {
+  .welcome .guideline {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: normal;
+  }
+}
+
 .welcome .btn-group {
   margin-top: 60px;
 }
 
+@media only screen and (max-width: 480px) {
+  .welcome .btn-group {
+    display: flex;
+    justify-content: none;
+    align-items: center;
+    flex-direction: none;
+    flex-flow: column wrap;
+    margin-top: 40px;
+  }
+}
+
 .welcome .btn-group .btn {
   height: 55px;
-  width: 170px;
+  Width: 170px;
   margin-left: 120px;
   cursor: pointer;
   color: #fff;
@@ -85,6 +140,20 @@ header .header-right li:first-child {
 
 .welcome .btn-group .btn:first-child {
   margin-left: 0px;
+}
+
+@media only screen and (max-width: 480px) {
+  .welcome .btn-group .btn {
+    margin-left: 0;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+    height: 48px;
+    Width: 40%;
+  }
+  .welcome .btn-group .btn:first-child {
+    margin-top: 0px;
+  }
 }
 
 .welcome .btn-group .register {
@@ -117,14 +186,44 @@ header .header-right li:first-child {
 .curriculum .img-box {
   display: flex;
   justify-content: center;
+  align-items: none;
+  flex-direction: none;
   margin-top: 50px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .curriculum .img-box {
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .curriculum .img-box {
+    flex-wrap: wrap;
+    align-content: space-around;
+  }
 }
 
 .curriculum .img-box li {
   display: flex;
+  justify-content: none;
+  align-items: none;
   flex-direction: column;
   text-align: center;
   margin-right: 60px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .curriculum .img-box li {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .curriculum .img-box li {
+    margin-top: 30px;
+    margin-right: 0;
+  }
 }
 
 .curriculum .img-box li:last-child {
@@ -133,7 +232,7 @@ header .header-right li:first-child {
 
 .curriculum .img-box li img {
   height: 300px;
-  width: 300px;
+  Width: 300px;
 }
 
 .curriculum .img-box li span {
@@ -143,45 +242,94 @@ header .header-right li:first-child {
 
 .contact {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: none;
+  flex-direction: column;
   text-align: center;
   height: 350px;
+  Width: none;
   margin-top: 50px;
   padding-top: 50px;
   background-color: #ebf4f5;
+}
+
+.contact .sub-title {
+  text-align: center;
+  font-size: 36px;
+}
+
+@media only screen and (max-width: 960px) {
+  .contact {
+    height: 100%;
+    Width: none;
+    padding: 40px 20px;
+  }
 }
 
 .contact form .form {
   margin: 50px 0 40px;
   display: flex;
   justify-content: center;
+  align-items: none;
+  flex-direction: none;
+}
+
+@media only screen and (max-width: 960px) {
+  .contact form .form {
+    flex-flow: column nowrap;
+    margin: 30px 0;
+  }
 }
 
 .contact form .form .form-left {
   margin-right: 50px;
 }
 
+@media only screen and (max-width: 960px) {
+  .contact form .form .form-left {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
 .contact form .form .form-left fieldset .name {
   margin-bottom: 20px;
   height: 50px;
-  width: 400px;
+  Width: 400px;
   box-sizing: border-box;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 960px) {
+  .contact form .form .form-left fieldset .name {
+    width: 80%;
+  }
 }
 
 .contact form .form .form-left fieldset .email {
   height: 50px;
-  width: 400px;
+  Width: 400px;
   box-sizing: border-box;
   font-size: 16px;
 }
 
+@media only screen and (max-width: 960px) {
+  .contact form .form .form-left fieldset .email {
+    width: 80%;
+  }
+}
+
 .contact form .form fieldset .inquiry {
   height: 120px;
-  width: 400px;
+  Width: 400px;
   box-sizing: border-box;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 960px) {
+  .contact form .form fieldset .inquiry {
+    width: 80%;
+  }
 }
 
 .contact form button {
@@ -200,6 +348,14 @@ header .header-right li:first-child {
   transition-duration: 500ms;
 }
 
+@media only screen and (max-width: 960px) {
+  .contact form button {
+    font-size: 20px;
+    padding: 5px 40px;
+    box-sizing: border-box;
+  }
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -210,15 +366,41 @@ footer {
   background-color: #233f51;
 }
 
+@media only screen and (max-width: 480px) {
+  footer {
+    justify-content: center;
+  }
+}
+
+footer .icon {
+  display: flex;
+  justify-content: none;
+  align-items: center;
+  flex-direction: none;
+}
+
 footer .icon img {
   height: 60px;
   margin-left: 80px;
 }
 
-footer .icon img span strong {
+footer .icon .name strong {
   color: #eae51f;
+  align-items: center;
+}
+
+@media only screen and (max-width: 480px) {
+  footer .icon {
+    display: none;
+  }
 }
 
 footer .footer-right {
   margin-right: 80px;
+}
+
+@media only screen and (max-width: 480px) {
+  footer .footer-right {
+    margin-right: 0;
+  }
 }

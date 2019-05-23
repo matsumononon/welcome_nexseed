@@ -28,29 +28,29 @@
 //  @include mediaq(m){
 //    background-color: green;
 //  }
-//  @include mediaq(ls){
+//  @include mediaq(s){
 //    background-color: red;
 //  }
 //}
 
-//$breakpoints:(
-//  s:"only screen and (max-width:480px)",
-//  m:"only screen and (max-width:960px)",
-//  l:"only screen and (max-width:1280px)"
-//);
-//
-////↑スマホ用、タブレット用、小型PC用でbreakpointsって名前の変数を設定
-//
-//@mixin mediaq($breakpoint){
-//  @if map-has-key($breakpoints,$breakpoint){
-//    @media #{map-get($breakpoints,$breakpoint)}{
-//      @content;
-//    }
-//  }@else{
-//    @error"$breakpointsに#{breakpoint}というキーはありません";
-//  }
-//}
-//
+$breakpoints:(
+  s:"only screen and (max-width:480px)",
+  m:"only screen and (max-width:960px)",
+  l:"only screen and (max-width:1280px)"
+);
+
+//↑スマホ用、タブレット用、小型PC用でbreakpointsって名前の変数を設定
+
+@mixin mediaq($breakpoint){
+  @if map-has-key($breakpoints,$breakpoint){
+    @media #{map-get($breakpoints,$breakpoint)}{
+      @content;
+    }
+  }@else{
+    @error"$breakpointsに#{breakpoint}というキーはありません";
+  }
+}
+
 //.guideline{
 //  font-size: 28px;
 //  @include mediaq(s){
@@ -68,11 +68,12 @@
 //  }
 //  }
 
+
+
 $main-color: #1dace0;
 $sub-color: #eae51f;
-
-
 //↑これが変数
+//↓これはmixin
 @mixin head-and-foot{
   display: flex;
   justify-content: space-between;
@@ -93,46 +94,77 @@ $sub-color: #eae51f;
   border: 3px solid rgba(236, 227, 35, .3);
 }
 @mixin name-and-email{
-  height: 50px;
-  width: 400px;
+  @include hw(50px,400px);
+//  height: 50px;
+//  width: 400px;
   box-sizing: border-box;
   font-size: 16px;
 }
 
-@mixin flex{
-  display:flex; 
+@mixin flex($flex,$justify,$align,$direction){
+  display:$flex; 
+  justify-content:$justify;
+  align-items:$align;
+  flex-direction: $direction;
+}
+//例えば、複数の引数を指定して一定箇所だけ変更したい時
+//@include mixin名(引数名:変更内容);
+//使わないところはnoneかnullを使う
+
+@mixin hw($h,$w){
+  height:$h;
+  Width:$w;
 }
 
+
+//mixin指定ここまで
 //ヘッダーここから
+body{
+  @include mediaq(s){
+    min-width: 375px;
+  }
+}
+
 .fixed{
   position: fixed;
   width: 100%;
   margin-top:-70px;
-// なんだこれは
+
 }
 header { 
   background-color: $main-color;
   @include head-and-foot;
   .icon{
-    display: flex;
-    align-items: center;
-   
-    
+    @include flex(flex,none,center,none);
+//    display: flex;
+//    align-items: center;
     img{
       @include icon;
+      
+      @include mediaq(s){
+        margin-left: 20px;
+      }
     }
     .name{
       strong{
         color: $sub-color;
       }
+      @include mediaq(s){
+        display: none;
+      }
     } 
   }
   .header-right{
-    @include flex;
-    align-items: center;
+    @include flex(flex,none,center,none);
+//    display: flex;
+//    align-items: center;
     margin-right: 80px; 
     li:first-child{
       margin-right:15px;
+    }
+    
+    @include mediaq(s){
+      display: none;
     }
   }
 }
@@ -142,19 +174,25 @@ header {
   margin-top: 70px;
 }
 .welcome{
-  @include flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex(flex,center,none,column);
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: center;
   text-align: center;
   background-image: url(../img/background1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  @include hw(100vh,none);
+//  height: 100vh;
   background-attachment: fixed;
   color: #fff;
   
   .title{
     font-size: 64px;
+    
+     @include mediaq(s){
+    font-size: 30px;
+  }
   }
   .guideline{
     margin-top: 50px;
@@ -163,12 +201,26 @@ header {
     li:not(:first-child){
       margin-top:16px;
     }
+    @include mediaq(s){
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: normal;
+    }
   }
   .btn-group{
     margin-top: 60px;
+    
+    @include mediaq(s){
+      @include flex(flex,none,center,none);
+//      display: flex;
+//      align-items: center;
+      flex-flow: column wrap;
+      margin-top: 40px;
+    }
     .btn{
-      height: 55px;
-      width: 170px;
+      @include hw(55px,170px);
+//      height: 55px;
+//      width: 170px;
       margin-left: 120px;
       cursor: pointer;
       color: #fff;
@@ -178,6 +230,18 @@ header {
       &:first-child{
       margin-left: 0px;
     }
+      @include mediaq(s){
+        margin-left: 0;
+        font-weight: bold;
+        font-size: 24px;
+        margin-top: 20px;
+        @include hw(48px,40%);
+//        height: 48px;
+//        width: 40%;
+        &:first-child{
+          margin-top: 0px;
+        }
+      }
     }
     
     .register{
@@ -205,20 +269,43 @@ header {
     font-size: 36px;
   }
   .img-box{
-    display: flex;
-    justify-content: center;
+    @include flex(flex,center,none,none);
+//    display: flex;
+//    justify-content: center;
     margin-top: 50px;
+    
+    @include mediaq(l){
+      justify-content: space-around;
+    }
+    
+    @include mediaq(m){
+      flex-wrap: wrap;
+      align-content: space-around;
+    }
+    
     li{
-      display: flex;
-      flex-direction: column;
+      @include flex(flex,none,none,column);
+//      display: flex;
+//      flex-direction: column;
       text-align: center;
       margin-right: 60px;
+      
+      @include mediaq(l){
+        margin-right: 30px;
+      }
+      
+      @include mediaq(m){
+        margin-top: 30px;
+        margin-right: 0;
+      }
+      
       &:last-child{
       margin-right: 0px;
     }
       img{
-        height: 300px;
-        width: 300px;
+        @include hw(300px,300px);
+//        height: 300px;
+//        width: 300px;
       }
       span{
         font-size: 24px;
@@ -232,41 +319,80 @@ header {
 //curriculimここまで
 //contactここから
 .contact{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex(flex,center,none,column);
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: center;
   text-align: center;
-  height: 350px;
+  @include hw(350px,none);
+//  height: 350px;
   margin-top: 50px;
   padding-top: 50px;
   background-color: #ebf4f5;
-  .sub-title{}
+  .sub-title{
+    text-align: center;
+    font-size: 36px;
+  }
+  
+  @include mediaq(m){
+    @include hw(100%,none);
+//    height: 100%;
+    padding: 40px 20px;
+  }
   form{
     .form{
       margin: 50px 0 40px;
-      display: flex;
-      justify-content: center;
+      @include flex(flex,center,none,none);
+//      display: flex;
+//      justify-content: center;
+      
+      @include mediaq(m){
+        flex-flow: column nowrap;
+        margin: 30px 0;
+      }
+      
       .form-left{
         margin-right: 50px;
+        
+        @include mediaq(m){
+          margin-right: 0;
+          margin-bottom: 30px;
+        }
         fieldset{
           .name{
             margin-bottom: 20px;
             @include name-and-email;
+            
+            @include mediaq(m){
+              include hw(none,80%);
+//              width: 80%;
+            }
           }
         }
         fieldset{
           .email{
             @include name-and-email;
+            
+            @include mediaq(m){
+              include hw(none,80%);
+//              width: 80%;
+            }
           }
         }
       }
     
     fieldset{
       .inquiry{
-          height: 120px;
-          width: 400px;
+        @include hw(120px,400px);
+//          height: 120px;
+//          width: 400px;
           box-sizing: border-box;
           font-size: 16px;
+        
+        @include mediaq(m){
+          include hw(none,80%);
+//          width: 80%;
+        }
       }
     }
     }
@@ -283,6 +409,12 @@ header {
         color:$main-color;
         transition-duration: 500ms;
       }
+      
+      @include mediaq(m){
+        font-size: 20px;
+        padding: 5px 40px;
+        box-sizing: border-box;
+      }
     }
   }
 }
@@ -293,18 +425,33 @@ footer{
   align-items: center;
   background-color: #233f51;
  
+  @include mediaq(s){
+    justify-content: center;
+  }
   .icon{
+    @include flex(flex,none,center,none);
+//    display:flex;
+//    align-items: center;
     img{
       @include icon;
-      span{
+      
+       }
+    .name{
         strong{
-         color: $sub-color;
+          color:$sub-color;
+          align-items: center;
         }
       }
-    }
+    @include mediaq(s){
+        display: none;
+      }
   }
   .footer-right{
     margin-right: 80px;
+    
+    @include mediaq(s){
+      margin-right: 0;
+    }
   }
 }
 //footerここまで
