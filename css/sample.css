@@ -1,0 +1,224 @@
+.fixed {
+  position: fixed;
+  width: 100%;
+  margin-top: -70px;
+}
+
+header {
+  background-color: #1dace0;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+}
+
+header .icon {
+  display: flex;
+  align-items: center;
+}
+
+header .icon img {
+  height: 60px;
+  margin-left: 80px;
+}
+
+header .icon .name strong {
+  color: #eae51f;
+}
+
+header .header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+}
+
+header .header-right li:first-child {
+  margin-right: 15px;
+}
+
+#margin-for-fixd {
+  margin-top: 70px;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../img/background1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.welcome .title {
+  font-size: 64px;
+}
+
+.welcome .guideline {
+  margin-top: 50px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.welcome .guideline li:not(:first-child) {
+  margin-top: 16px;
+}
+
+.welcome .btn-group {
+  margin-top: 60px;
+}
+
+.welcome .btn-group .btn {
+  height: 55px;
+  width: 170px;
+  margin-left: 120px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 28px;
+  border-radius: 10px;
+}
+
+.welcome .btn-group .btn:first-child {
+  margin-left: 0px;
+}
+
+.welcome .btn-group .register {
+  background-color: rgba(29, 172, 224, 0.5);
+  border: 3px solid rgba(29, 172, 224, 0.3);
+}
+
+.welcome .btn-group .register:hover {
+  background-color: #1dace0;
+}
+
+.welcome .btn-group .login {
+  background-color: rgba(236, 227, 35, 0.5);
+  border: 3px solid rgba(236, 227, 35, 0.3);
+}
+
+.welcome .btn-group .loginhover {
+  background-color: #eae51f;
+}
+
+.curriculum {
+  margin-top: 50px;
+}
+
+.curriculum .sub-title {
+  text-align: center;
+  font-size: 36px;
+}
+
+.curriculum .img-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.curriculum .img-box li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 60px;
+}
+
+.curriculum .img-box li:last-child {
+  margin-right: 0px;
+}
+
+.curriculum .img-box li img {
+  height: 300px;
+  width: 300px;
+}
+
+.curriculum .img-box li span {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 350px;
+  margin-top: 50px;
+  padding-top: 50px;
+  background-color: #ebf4f5;
+}
+
+.contact form .form {
+  margin: 50px 0 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact form .form .form-left {
+  margin-right: 50px;
+}
+
+.contact form .form .form-left fieldset .name {
+  margin-bottom: 20px;
+  height: 50px;
+  width: 400px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.contact form .form .form-left fieldset .email {
+  height: 50px;
+  width: 400px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.contact form .form fieldset .inquiry {
+  height: 120px;
+  width: 400px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.contact form button {
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #1dace0;
+  color: #fff;
+  border: solid 3px #1dace0;
+  padding: 15px 30px;
+  box-sizing: border-box;
+}
+
+.contact form button:hover {
+  background-color: #fff;
+  color: #1dace0;
+  transition-duration: 500ms;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+  align-items: center;
+  background-color: #233f51;
+}
+
+footer .icon img {
+  height: 60px;
+  margin-left: 80px;
+}
+
+footer .icon img span strong {
+  color: #eae51f;
+}
+
+footer .footer-right {
+  margin-right: 80px;
+}

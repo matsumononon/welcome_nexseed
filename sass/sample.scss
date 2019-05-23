@@ -1,0 +1,311 @@
+//例
+////変数を使用したメディアクエリ(レスポンシブ対応)
+////連想配列みたいなもの↓
+//$breakpoints:(
+//  xs:"only screen and (max-width:320px)",
+//  s:"only screen and (max-width:575px)",
+//  m:"only screen and (max-width:767px)",
+//  l:"only screen and (max-width:991px)",
+//  xl:"only screen and (max-width:1199px)"
+//  
+//);
+////引数の設定 map-has-keyはデフォルトで存在する言葉
+//@mixin mediaq($breakpoint){
+//  @if map-has-key($breakpoints,$breakpoint){
+//    @media #{map-get($breakpoints,$breakpoint)}{
+//      @content;
+//    }
+//  }@else{
+//    @error"$breakpointsに#{$breakpoint}というキーはありません";
+//  }
+//}
+//
+//body{
+//background-color: #ddd;
+//  @include mediaq(l){
+//    background-color: blue;
+//  }
+//  @include mediaq(m){
+//    background-color: green;
+//  }
+//  @include mediaq(ls){
+//    background-color: red;
+//  }
+//}
+
+//$breakpoints:(
+//  s:"only screen and (max-width:480px)",
+//  m:"only screen and (max-width:960px)",
+//  l:"only screen and (max-width:1280px)"
+//);
+//
+////↑スマホ用、タブレット用、小型PC用でbreakpointsって名前の変数を設定
+//
+//@mixin mediaq($breakpoint){
+//  @if map-has-key($breakpoints,$breakpoint){
+//    @media #{map-get($breakpoints,$breakpoint)}{
+//      @content;
+//    }
+//  }@else{
+//    @error"$breakpointsに#{breakpoint}というキーはありません";
+//  }
+//}
+//
+//.guideline{
+//  font-size: 28px;
+//  @include mediaq(s){
+//    font-size: 24px;
+//  }
+//}
+//入れ子構造example↓↓
+//#main {
+//  font-size: 12rem;
+//  .btn{
+//    font-size: 10rem;
+//  }
+//  .hoge{
+//    color:#fff;
+//  }
+//  }
+
+$main-color: #1dace0;
+$sub-color: #eae51f;
+
+
+//↑これが変数
+@mixin head-and-foot{
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+}
+@mixin icon{
+  height: 60px;
+  margin-left: 80px;
+}
+@mixin register{
+  background-color: rgba(29, 172, 224, .5);
+  border: 3px solid rgba(29, 172, 224, .3);
+}
+@mixin login{
+  background-color: rgba(236, 227, 35, .5);
+  border: 3px solid rgba(236, 227, 35, .3);
+}
+@mixin name-and-email{
+  height: 50px;
+  width: 400px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+@mixin flex{
+  display:flex; 
+}
+
+//ヘッダーここから
+.fixed{
+  position: fixed;
+  width: 100%;
+  margin-top:-70px;
+// なんだこれは
+}
+header { 
+  background-color: $main-color;
+  @include head-and-foot;
+  .icon{
+    display: flex;
+    align-items: center;
+   
+    
+    img{
+      @include icon;
+    }
+    .name{
+      strong{
+        color: $sub-color;
+      }
+    } 
+  }
+  .header-right{
+    @include flex;
+    align-items: center;
+    margin-right: 80px; 
+    li:first-child{
+      margin-right:15px;
+    }
+  }
+}
+//headerここまで
+//welcomeここから
+#margin-for-fixd{
+  margin-top: 70px;
+}
+.welcome{
+  @include flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../img/background1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  color: #fff;
+  
+  .title{
+    font-size: 64px;
+  }
+  .guideline{
+    margin-top: 50px;
+    font-size: 28px;
+    font-weight: bold;
+    li:not(:first-child){
+      margin-top:16px;
+    }
+  }
+  .btn-group{
+    margin-top: 60px;
+    .btn{
+      height: 55px;
+      width: 170px;
+      margin-left: 120px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+      font-size: 28px;
+      border-radius: 10px;
+      &:first-child{
+      margin-left: 0px;
+    }
+    }
+    
+    .register{
+      @include register;
+        &:hover{
+        background-color: $main-color;
+    }
+    }
+    
+    .login{
+     @include login;
+      &hover{
+      background-color: $sub-color;
+    }
+    }
+    
+  }
+}
+//welcomeここまで
+//curriculumここから
+.curriculum{
+  margin-top: 50px;
+  .sub-title{
+    text-align: center;
+    font-size: 36px;
+  }
+  .img-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    li{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-right: 60px;
+      &:last-child{
+      margin-right: 0px;
+    }
+      img{
+        height: 300px;
+        width: 300px;
+      }
+      span{
+        font-size: 24px;
+        margin-top: 20px;
+      }
+    }
+    
+    
+  }
+}
+//curriculimここまで
+//contactここから
+.contact{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 350px;
+  margin-top: 50px;
+  padding-top: 50px;
+  background-color: #ebf4f5;
+  .sub-title{}
+  form{
+    .form{
+      margin: 50px 0 40px;
+      display: flex;
+      justify-content: center;
+      .form-left{
+        margin-right: 50px;
+        fieldset{
+          .name{
+            margin-bottom: 20px;
+            @include name-and-email;
+          }
+        }
+        fieldset{
+          .email{
+            @include name-and-email;
+          }
+        }
+      }
+    
+    fieldset{
+      .inquiry{
+          height: 120px;
+          width: 400px;
+          box-sizing: border-box;
+          font-size: 16px;
+      }
+    }
+    }
+    button{
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: $main-color;
+      color:#fff;
+      border: solid 3px $main-color;
+      padding: 15px 30px;
+      box-sizing: border-box;
+      &:hover{
+        background-color: #fff;
+        color:$main-color;
+        transition-duration: 500ms;
+      }
+    }
+  }
+}
+//contactここまで
+//footerここから
+footer{
+ @include head-and-foot;
+  align-items: center;
+  background-color: #233f51;
+ 
+  .icon{
+    img{
+      @include icon;
+      span{
+        strong{
+         color: $sub-color;
+        }
+      }
+    }
+  }
+  .footer-right{
+    margin-right: 80px;
+  }
+}
+//footerここまで
+
